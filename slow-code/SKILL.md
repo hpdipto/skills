@@ -11,12 +11,9 @@ Implement the requested change one small step at a time.
 
 Before starting:
 
-1. Load and follow "`caveman` ultra".
-2. If `ponytail` is available, load and follow it as well.
-
-Do not proceed until "`caveman` ultra" has been loaded.
-
-Throughout the session, continuously follow the loaded skills. Do not drift from them.
+1. If the `asd-ste100` skill is available, load and follow it.
+2. If the `asd-ste100` skill is not available, follow the ASD-STE100 writing conventions directly.
+3. If `ponytail` is available, load and follow it as well.
 
 ## Context
 
@@ -57,6 +54,7 @@ Do not start implementation without context.
 - Never edit multiple files in one step.
 - Never continue automatically after an edit.
 - Always present the change after a completed chunk.
+- Use clear, simple, and unambiguous language following ASD-STE100.
 - Preserve all previous instructions and decisions throughout the session.
 - Do not make unrelated changes.
 - Do not batch edits for convenience.
