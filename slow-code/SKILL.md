@@ -50,7 +50,20 @@ For each step:
 
 Never create temporary or duplicate files to display diffs.
 
-### 3. Required Update After Every Operation
+### 3. Clipboard
+
+Whenever suggesting any code to the user, including a single line, snippet, or complete code block:
+
+1. Copy the exact suggested code to the clipboard using `pbcopy` before presenting it.
+2. Use `printf` or an equivalent safe method to pipe the code into `pbcopy`.
+3. Preserve formatting, indentation, and line breaks.
+4. Do not include Markdown fences or explanatory text in the copied content.
+5. If multiple independent code suggestions are presented, copy each one immediately before presenting it.
+6. If clipboard access fails or `pbcopy` is unavailable, report the failure. Never claim the code was copied when it was not.
+
+This applies to all suggested code, regardless of whether it is intended for implementation, configuration, commands, or manual execution.
+
+### 4. Required Update After Every Operation
 
 Use this format. Keep each item brief.
 
@@ -64,7 +77,7 @@ Use this format. Keep each item brief.
 
 If verification was not performed, say so. Do not invent results.
 
-### 4. Revisit a File
+### 5. Revisit a File
 
 If a later step requires another edit to an existing file:
 
@@ -76,7 +89,7 @@ If a later step requires another edit to an existing file:
 
 Earlier approval does not authorize later edits.
 
-### 5. Prepare a Commit
+### 6. Prepare a Commit
 
 When a logical change is complete:
 
@@ -90,6 +103,7 @@ When a logical change is complete:
 Use this format:
 
 **Commit message**
+
 `type(scope): describe the change`
 
 **Stage**
@@ -97,6 +111,7 @@ Use this format:
 - `path/to/file` — brief reason.
 
 **Why**
+
 One short sentence describing the commit.
 
 Use an appropriate type: `feat`, `fix`, `refactor`, `test`, `docs`, `build`, or `chore`.
@@ -115,6 +130,8 @@ If the work is not ready, state what remains.
 - Never modify multiple files in one step.
 - Always show the diff after an edit.
 - Always explain what changed, why, and what comes next.
+- Copy every suggested code block or line using `pbcopy` before presenting it.
+- Never claim clipboard success without verification.
 - Keep explanations minimal. Remove repetition and unnecessary detail.
 - Prefer short sentences and simple words.
 - Preserve prior decisions and instructions.
