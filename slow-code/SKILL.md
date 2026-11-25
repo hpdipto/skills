@@ -63,7 +63,29 @@ Whenever suggesting any code to the user, including a single line, snippet, or c
 
 This applies to all suggested code, regardless of whether it is intended for implementation, configuration, commands, or manual execution.
 
-### 4. Required Update After Every Operation
+### 4. Code Location
+
+Whenever suggesting code for the user to implement manually:
+
+1. Clearly specify the exact target file path.
+2. Specify the exact line number or line range where the code should be inserted, replaced, or modified.
+3. For replacements, identify the existing code or section being replaced.
+4. For insertions, identify the surrounding code or a nearby unique anchor so the location is unambiguous.
+5. Never present a suggested code block without specifying its target file and location.
+6. If exact line numbers cannot be determined, explain how to locate the insertion point using a unique code reference.
+7. Distinguish clearly between inserting new code, replacing existing code, and modifying existing code.
+
+Use this format:
+
+**File:** `path/to/file.ts`  
+**Lines:** 15–18  
+**Action:** Replace the existing configuration.
+
+```ts
+const timeout = 5000
+```
+
+### 5. Required Update After Every Operation
 
 Use this format. Keep each item brief.
 
@@ -77,7 +99,7 @@ Use this format. Keep each item brief.
 
 If verification was not performed, say so. Do not invent results.
 
-### 5. Revisit a File
+### 6. Revisit a File
 
 If a later step requires another edit to an existing file:
 
@@ -89,7 +111,7 @@ If a later step requires another edit to an existing file:
 
 Earlier approval does not authorize later edits.
 
-### 6. Prepare a Commit
+### 7. Prepare a Commit
 
 When a logical change is complete:
 
@@ -132,6 +154,8 @@ If the work is not ready, state what remains.
 - Always explain what changed, why, and what comes next.
 - Copy every suggested code block or line using `pbcopy` before presenting it.
 - Never claim clipboard success without verification.
+- Every suggested code snippet must specify its exact target file and line number or an unambiguous insertion point.
+- Clearly identify whether code should be inserted, replaced, or modified.
 - Keep explanations minimal. Remove repetition and unnecessary detail.
 - Prefer short sentences and simple words.
 - Preserve prior decisions and instructions.
@@ -141,4 +165,3 @@ If the work is not ready, state what remains.
 - Suggest Conventional Commit messages and exact staging files when ready.
 - Never stage, commit, or push without permission.
 - If requirements are unclear, stop and ask.
-- Never continue automatically after an operation.
